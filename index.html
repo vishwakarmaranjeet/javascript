@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[HTML, JavaScript]</title>
+    <link rel="stylesheet" href="/main.css" />
+  </head>
+  <body>
+    <main>
+      <section class="container">
+        <section class="flexColumn">
+          <section class="bgChanger">
+            <button type="button" id="start_btn">Start</button>
+            <button type="button" id="stop_btn">Stop</button>
+            <h3>Event Delegation</h3>
+            <div id="eventdelegation"></div>
+          </section>
+          <section class="formContainer">
+            <form class="userForm">
+              <input
+                type="text"
+                name="firstName"
+                id="firstName"
+                placeholder="First name"
+                value=""
+              />
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                placeholder="Last name"
+                value=""
+              />
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                autocomplete="name"
+                value=""
+              />
+              <input
+                type="number"
+                name="phone"
+                id="phone"
+                placeholder="Phone"
+                value=""
+              />
+              <button type="button" id="submitBtn">Submit</button>
+              <button type="button" id="clearBtn">Clear</button>
+              <div id="formData"></div>
+            </form>
+          </section>
+        </section>
+      </section>
+    </main>
+    <script src="/app.js" async></script>
+  </body>
+</html>

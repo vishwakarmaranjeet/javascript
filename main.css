@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+.flexColumn {
+  display: flex;
+}
+.bgChanger {
+  display: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+button {
+  padding: 8px 12px;
+  background-color: #fff;
+  border: none;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.bgChanger button:not(:first-child) {
+  margin-left: 10px;
+}
+.formContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.userForm {
+  width: 40%;
+  margin-top: 40px;
+}
+.userForm input {
+  border-radius: 4px;
+  font-family: inherit;
+  border: 1px solid #333;
+  padding: 10px 12px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+.cardContainer {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.card {
+  width: 19.555%;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0 0 3px #ccc;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.container {
+  padding: 40px;
+}
+.eventdelegation {
+  margin-top: 30px;
+}
+:where(.grandparent, .parent, .child) {
+  padding: 10px;
+  border: 1px solid #333;
+  cursor: pointer;
+}
