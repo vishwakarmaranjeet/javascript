@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carousel</title>
+    <link rel="stylesheet" href="../main.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/css">
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0%;
+      }
+      img {
+        width: 400px;
+        height: 400px;
+        object-fit: cover;
+      }
+      .carousel {
+        width: 400px;
+        height: 550px;
+        overflow: hidden;
+      }
+      .image-container {
+        display: flex;
+        transform: translateX(0);
+        transition: transform 0.5s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mx-auto">
+      <div class="flex mt-20">
+        <div class="m-auto">
+          <div class="carousel">
+            <div class="image-container" id="imgs">
+              <img
+                class="object-cover"
+                src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&h=1280&q=80"
+                alt="image-one"
+              />
+              <img
+                class="object-cover"
+                src="https://images.unsplash.com/photo-1663264891853-a32793671359?ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&h=1280&q=80"
+                alt="image-two"
+              />
+              <img
+                class="object-cover"
+                src="https://images.unsplash.com/photo-1663264891853-a32793671359?ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&h=1280&q=80"
+                alt="image-three"
+              />
+            </div>
+            <div class="button-container">
+              <button
+                type="button"
+                id="left"
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+              >
+                Prev
+              </button>
+              <button
+                type="button"
+                id="right"
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+              >
+                Right
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
