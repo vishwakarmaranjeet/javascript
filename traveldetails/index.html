@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/main.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Travel Detail</title>
+  </head>
+  <body>
+    <div class="container mx-auto">
+      <div>
+        <button
+          value="Mumbai"
+          id="origin"
+          class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+        >
+          Mumbai
+        </button>
+        <button
+          id="destination"
+          value="Delhi"
+          class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+        >
+          Delhi
+        </button>
+      </div>
+      <br />
+      <button
+        disabled
+        id="search_btn"
+        class="bg-blue-500 disabled:opacity-50 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+      >
+        Search
+      </button>
+      <button
+        id="reset_btn"
+        class="bg-blue-500 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+      >
+        Reset
+      </button>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>

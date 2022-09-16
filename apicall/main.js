@@ -1,4 +1,6 @@
 // API
+const API_URL = `https://reqres.in/api/users`;
+
 const getElementById = (el) => {
   if (!el) {
     return;
@@ -34,7 +36,7 @@ const createHTMLCard = (data) => {
 
 const getUserDetailsResponse = async () => {
   try {
-    let response = await fetch(`https://reqres.in/api/users`);
+    let response = await fetch(API_URL);
     let data = await response.json();
     if (response.status === 200) {
       createHTMLCard(data.data ? data.data : null);
