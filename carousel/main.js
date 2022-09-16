@@ -5,33 +5,32 @@ const img = document.querySelectorAll("#imgs img");
 
 let id = 0;
 
-function changeImage() {
+const changeImage = () => {
   if (id > img.length - 1) {
     id = 0;
   } else if (id < 0) {
     id = img.length - 1;
   }
   imgs.style.transform = `translateX(${-id * 400}px)`;
-}
+};
 
-function run() {
+const runCarousel = () => {
   id++;
   changeImage();
-}
+};
 
-function resetInterval() {
+const resetInterval = () => {
   clearInterval(interval);
-  interval = setInterval(run, 2000);
-}
+  interval = setInterval(runCarousel, 2000);
+};
 
-let interval = setInterval(run, 3000);
+let interval = setInterval(runCarousel, 3000);
 
 rigthBtn.addEventListener("click", () => {
   id++;
   resetInterval();
   changeImage();
 });
-
 left.addEventListener("click", () => {
   id--;
   resetInterval();
