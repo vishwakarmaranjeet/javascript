@@ -19,6 +19,7 @@ const incrementCounter = () => {
     }, 1000);
   } else {
     clearInterval(intervalID);
+    counterResult.innerHTML = counter;
   }
 };
 // Start stop counter
@@ -26,8 +27,10 @@ startStop.addEventListener("click", incrementCounter);
 // Reset counter
 reset.addEventListener("click", () => {
   clearInterval(intervalID);
-  counterResult.innerHTML = initial;
+  counter = initial;
+  counterResult.innerHTML = counter;
 });
 document.addEventListener("DOMContentLoaded", () => {
+  clearInterval(intervalID);
   counterResult.innerHTML = initial;
 });
