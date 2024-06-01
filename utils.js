@@ -168,3 +168,72 @@ export function camelCaseToTitleCase(str) {
 // Usage
 const camelCaseString = 'myVariableName';
 const titleCaseString = camelCaseToTitleCase(camelCaseString);
+
+
+
+function formatNumberUS(value) {
+  if (typeof value !== 'number') {
+      throw new Error('Value must be a number');
+  }
+
+  if (value < 0) {
+      value = Math.abs(value); // Work with absolute value
+      let formattedValue = '';
+      if (value >= 1000000000) {
+          formattedValue = '-$(' + (value / 1000000000).toLocaleString('en-US', { maximumFractionDigits: 2 }) + 'B)'; // \u2009 Unicode for thin space
+      } else if (value >= 1000000) {
+          formattedValue = '-$(' + (value / 1000000).toLocaleString('en-US', { maximumFractionDigits: 2 }) + 'M)'; // \u2009 Unicode for thin space
+      } else if (value >= 1000) {
+          formattedValue = '-$(' + (value / 1000).toLocaleString('en-US', { maximumFractionDigits: 2 }) + 'k)'; // \u2009 Unicode for thin space
+      } else {
+          formattedValue = '-$(' + value.toLocaleString('en-US', { maximumFractionDigits: 2 }) + ')'; // \u2009 Unicode for thin space
+      }
+      return formattedValue;
+  } else {
+      if (value >= 1000000000) {
+          return '$\u2009' + (value / 1000000000).toLocaleString('en-US', { maximumFractionDigits: 2 }) + 'B'; // \u2009 Unicode for thin space
+      } else if (value >= 1000000) {
+          return '$\u2009' + (value / 1000000).toLocaleString('en-US', { maximumFractionDigits: 2 }) + 'M'; // \u2009 Unicode for thin space
+      } else if (value >= 1000) {
+          return '$\u2009' + (value / 1000).toLocaleString('en-US', { maximumFractionDigits: 2 }) + 'k'; // \u2009 Unicode for thin space
+      } else {
+          return '$\u2009' + value.toLocaleString('en-US', { maximumFractionDigits: 2 }); // \u2009 Unicode for thin space
+      }
+  }
+}
+
+function parseNumberUS(str) {
+  if (typeof str !== 'string') {
+      throw new Error('Input must be a string');
+  }
+
+  const numPart = parseFloat(str.replace(/[^0-9.-]+/g,"")); // Extract numeric part from the string
+  const suffix = str.replace(/[\d.-]+/g,"").toUpperCase(); // Extract suffix part from the string
+  const isNegative = str.startsWith('-');
+
+  if (suffix === 'B') {
+      return isNegative ? -(numPart * 1000000000) : numPart * 1000000000;
+  } else if (suffix === 'M') {
+      return isNegative ? -(numPart * 1000000) : numPart * 1000000;
+  } else if (suffix === 'K') {
+      return isNegative ? -(numPart * 1000) : numPart * 1000;
+  } else {
+      return isNegative ? -numPart : numPart;
+  }
+}
+
+console.log(formatNumberUS(-1000));       // Output: $ (1,000.00)
+console.log(formatNumberUS(-25000));      // Output: $ (25,000.00)
+console.log(formatNumberUS(-1000000));    // Output: $ (1.00M)
+console.log(formatNumberUS(-5000000));    // Output: $ (5.00M)
+console.log(formatNumberUS(-1000000000)); // Output: $ (1.00B)
+console.log(formatNumberUS(-5000000000)); // Output: $ (5.00B)
+console.log(formatNumberUS(-500));        // Output: $ (500.00)
+
+console.log(parseNumberUS('-$ 1,000.00'));        // Output: -1000
+console.log(parseNumberUS('-$ 25,000.00'));       // Output: -25000
+console.log(parseNumberUS('-$ 1.00M'));           // Output: -1000000
+console.log(parseNumberUS('-$ 5.00M'));           // Output: -5000000
+console.log(parseNumberUS('-$ 1.00B'));           // Output: -1000000000
+console.log(parseNumberUS('-$ 5.00B'));           // Output: -5000000000
+console.log(parseNumberUS('-$ 500.00'));          // Output: -500
