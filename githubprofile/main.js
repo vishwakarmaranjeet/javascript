@@ -8,7 +8,6 @@ const getUser = async (username) => {
   try {
     const response = await fetch(API_URL + username);
     const data = await response.json();
-    console.log("User Data-->", data);
     createUserCard(data);
     getRepos(username);
   } catch (e) {
@@ -122,7 +121,7 @@ const addReposToCard = (repos) => {
   });
 };
 
-getUser("bradtraversy");
+getUser("vishwakarmaranjeet");
 
 const searchUser = () => {
   const user = document.getElementById("username").value;
