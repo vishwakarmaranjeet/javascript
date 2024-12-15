@@ -24,3 +24,4 @@ const fruitsCount = fruits.reduce((acc, value) => {
 }, {});
 
 console.log(fruitsCount);
+

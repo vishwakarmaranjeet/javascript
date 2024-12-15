@@ -16,7 +16,7 @@ const cart = [
   },
 ];
 
-let walletBalance = 200000;
+let walletBalance = 500000;
 
 createOrder(cart)
   .then(function (orderID) {
@@ -73,10 +73,17 @@ function showOrderSummary(orderStatus) {
   });
 }
 
+function getTotalOrderTotal (orders) {
+  const totalOrderAmount = orders.reduce((accumulator, value) => {
+    return accumulator + value.price;
+  }, 0);
+  return totalOrderAmount;
+}
+
 function updateWallet(orderHistory) {
   return new Promise(function (resolve, reject) {
     if (orderHistory.status === "success") {
-      let orderAmount = 150000;
+      let orderAmount = getTotalOrderTotal(orderHistory.orders || 0);
       walletBalance = walletBalance - orderAmount;
       resolve({ balance: walletBalance, message: "Wallet updated" });
     } else {
