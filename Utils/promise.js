@@ -34,6 +34,9 @@ createOrder(cart)
     console.log(orderHistory);
     return updateWallet(orderHistory);
   })
+  .then(function (orderHistory) {
+    return shipmentDetails(orderHistory.status);
+  })
   .then(function (response) {
     console.log(response);
   })
@@ -44,7 +47,7 @@ createOrder(cart)
 function createOrder(cart) {
   return new Promise(function (resolve, reject) {
     if (!validateCard(cart)) {
-      reject(new Error("Cart is not valid"));
+      reject(new Error("Cart is not valid, we are unable to proceed your orders"));
     }
     let orderID = 98790;
     if (orderID) {
@@ -68,7 +71,7 @@ function showOrderSummary(orderStatus) {
     if (orderStatus.paymentStatus === 1) {
       resolve({ status: "success", orders: cart });
     } else {
-      reject(new Error("Soemthing went wrong"));
+      reject(new Error("Soemthing went wrong. try again later"));
     }
   });
 }
@@ -80,12 +83,22 @@ function getTotalOrderTotal (orders) {
   return totalOrderAmount;
 }
 
+function shipmentDetails (status){
+  return new Promise(function (resolve, reject) {
+    if (status === "success"){
+      resolve({ status: "success", message: "We will deliver your orders soon"});
+    }
+    else {
+      reject({ status: "failed", message: "We are unable to delivered your orders" });
+    }
+  })
+}
 function updateWallet(orderHistory) {
   return new Promise(function (resolve, reject) {
     if (orderHistory.status === "success") {
       let orderAmount = getTotalOrderTotal(orderHistory.orders || 0);
       walletBalance = walletBalance - orderAmount;
-      resolve({ balance: walletBalance, message: "Wallet updated" });
+      resolve({ balance: walletBalance, message: "Wallet updated", status: "success" });
     } else {
       reject(new Error("Wallet balance not updated"));
     }
